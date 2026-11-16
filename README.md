@@ -65,46 +65,46 @@ El proyecto no incluye claves de API en el código ni en el repositorio. Para ej
     | Beta | $0,43\%$ |
   * Debe mostrarse la gráfica con la forma de onda temporal y el espectro $\text{PSD}$.
 * **Respuesta obtenida:**
-<details>
-   <summary>Ver respuesta completa del agente</summary>
-
-A continuación presento los resultados del análisis de la señal sintética generada con componente principal **Alpha**.
-
-### Parámetros de la señal
-- **Tipo:** Señal sintética educativa (componente principal: alpha)
-- **Frecuencia de muestreo:** 256 Hz
-- **Duración:** 10 s
-- **Canal analizado:** Sintético
-- **Rango analizado:** 1 – 30 Hz
-
-### Potencias absolutas (µV²)
-
-| Banda | Rango (Hz) | Potencia absoluta (µV²) |
-| :--- | :---: | :---: |
-| Delta | [1, 4) | 0,0064 |
-| Theta | [4, 8) | 0,0079 |
-| Alpha | [8, 13) | 8,0021 |
-| Beta | [13, 30] | 0,0364 |
-
-### Potencias relativas (respecto al total 1–30 Hz)
-
-La potencia total entre 1 y 30 Hz fue de **8,0528 µV²**.
-
-| Banda | Potencia relativa |
-| :--- | :---: |
-| Delta | 0,08 % |
-| Theta | 0,10 % |
-| Alpha | **99,37 %** |
-| Beta | 0,45 % |
-
-### Banda predominante
-La banda predominante es **Alpha**, concentrando casi la totalidad de la potencia de la señal en el rango analizado.
-
----
-
-**Nota importante:** Esta señal es sintética y tiene fines educativos. No reproduce toda la complejidad de un EEG real, por lo que estos resultados no deben utilizarse para inferir estados fisiológicos, psicológicos ni para diagnosticar ninguna condición.
-
-</details>
+   <details>
+      <summary>Ver respuesta completa del agente</summary>
+   
+   A continuación presento los resultados del análisis de la señal sintética generada con componente principal **Alpha**.
+   
+   ### Parámetros de la señal
+   - **Tipo:** Señal sintética educativa (componente principal: alpha)
+   - **Frecuencia de muestreo:** 256 Hz
+   - **Duración:** 10 s
+   - **Canal analizado:** Sintético
+   - **Rango analizado:** 1 – 30 Hz
+   
+   ### Potencias absolutas (µV²)
+   
+   | Banda | Rango (Hz) | Potencia absoluta (µV²) |
+   | :--- | :---: | :---: |
+   | Delta | [1, 4) | 0,0064 |
+   | Theta | [4, 8) | 0,0079 |
+   | Alpha | [8, 13) | 8,0021 |
+   | Beta | [13, 30] | 0,0364 |
+   
+   ### Potencias relativas (respecto al total 1–30 Hz)
+   
+   La potencia total entre 1 y 30 Hz fue de **8,0528 µV²**.
+   
+   | Banda | Potencia relativa |
+   | :--- | :---: |
+   | Delta | 0,08 % |
+   | Theta | 0,10 % |
+   | Alpha | **99,37 %** |
+   | Beta | 0,45 % |
+   
+   ### Banda predominante
+   La banda predominante es **Alpha**, concentrando casi la totalidad de la potencia de la señal en el rango analizado.
+   
+   ---
+   
+   **Nota importante:** Esta señal es sintética y tiene fines educativos. No reproduce toda la complejidad de un EEG real, por lo que estos resultados no deben utilizarse para inferir estados fisiológicos, psicológicos ni para diagnosticar ninguna condición.
+   
+   </details>
 
 * **Validación:** *(Escribe aquí tu valoración breve sobre la ejecución de herramientas, exactitud numérica y visualización)*
 
