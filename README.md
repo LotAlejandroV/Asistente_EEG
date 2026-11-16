@@ -49,3 +49,99 @@ El proyecto no incluye claves de API en el código ni en el repositorio. Para ej
 2. **Configura la variable de entorno:** Crea un archivo `.env` en la raíz del proyecto (ignorado por Git) y añade la siguiente línea:
    ```env
    NVIDIA_API_KEY="tu_clave_aqui"
+
+## 5. Casos de Prueba y Resultados
+
+### Prueba 1 — Análisis de una señal sintética Alpha *(Habitual 1)*
+* **Pregunta:** *"Genera una señal sintética con componente principal Alpha. Analiza sus potencias absolutas y relativas e identifica la banda predominante."*
+* **Resultado esperado:**
+  * Ejecutar `analizar_senal_eeg` e identificar **Alpha** como banda predominante.
+  * Las potencias relativas deben sumar aproximadamente $100\%$, coincidiendo con los valores de referencia:
+    | Banda | Potencia relativa de referencia |
+    | :--- | :---: |
+    | Delta | $0,07\%$ |
+    | Theta | $0,14\%$ |
+    | Alpha | $99,36\%$ |
+    | Beta | $0,43\%$ |
+  * Debe mostrarse la gráfica con la forma de onda temporal y el espectro $\text{PSD}$.
+* **Respuesta obtenida:**
+  <details>
+  <summary>Ver respuesta completa del agente</summary>
+
+  > *(Pega aquí la respuesta textual generada por el agente)*
+
+  </details>
+* **Validación:** *(Escribe aquí tu valoración breve sobre la ejecución de herramientas, exactitud numérica y visualización)*
+
+---
+
+### Prueba 2 — Consulta conceptual sobre Alpha *(Habitual 2)*
+* **Pregunta:** *"¿Qué ocurre con la actividad Alpha cuando una persona abre los ojos? Explica el fenómeno y su interpretación fisiológica."*
+* **Resultado esperado:**
+  * Consultar `consultar_conceptos_eeg`.
+  * Explicar que la actividad Alpha posterior suele atenuarse al abrir los ojos o durante tareas de procesamiento visual (*reactividad Alpha*).
+  * Mantener prudencia interpretativa sin afirmar que Alpha mide directamente calma, bienestar o un estado psicológico.
+* **Respuesta obtenida:**
+  <details>
+  <summary>Ver respuesta completa del agente</summary>
+
+  > *(Pega aquí la respuesta textual generada por el agente)*
+
+  </details>
+* **Validación:** *(Escribe aquí tu valoración breve sobre la recuperación conceptual y el tono prudente)*
+
+---
+
+### Prueba 3 — Comparación de dos señales sintéticas *(Habitual 3)*
+* **Pregunta:** *"Genera una señal sintética Delta y otra Beta. Analiza ambas, compara sus potencias relativas e indica cuál es la banda predominante en cada una."*
+* **Resultado esperado:**
+  * Ejecutar `analizar_senal_eeg` para cada señal y distinguir correctamente ambas distribuciones, mostrando dos visualizaciones en paralelo.
+  * Identificar predominancia **Delta** en la primera señal y **Beta** en la segunda, coincidiendo con las referencias numéricas:
+    | Banda | Señal Delta (ref.) | Señal Beta (ref.) |
+    | :--- | :---: | :---: |
+    | Delta | $98,72\%$ | $0,11\%$ |
+    | Theta | $0,25\%$ | $0,25\%$ |
+    | Alpha | $0,26\%$ | $0,26\%$ |
+    | Beta | $0,76\%$ | $99,38\%$ |
+* **Respuesta obtenida:**
+  <details>
+  <summary>Ver respuesta completa del agente</summary>
+
+  > *(Pega aquí la respuesta textual generada por el agente)*
+
+  </details>
+* **Validación:** *(Escribe aquí tu valoración breve sobre la comparación entre señales y la generación de las dos gráficas)*
+
+---
+
+### Prueba 4 — Consulta sobre artefactos EOG y EMG *(Uso de herramienta)*
+* **Pregunta:** *"¿Qué artefactos EOG y EMG pueden contaminar una señal EEG? Explica cómo pueden afectar las frecuencias bajas y la banda Beta."*
+* **Resultado esperado:**
+  * Invocar `consultar_conceptos_eeg` para recuperar la información de artefactos de la base de conocimiento local.
+  * Explicar que los artefactos oculares (**EOG**: parpadeos y movimientos oculares) aportan deflexiones de gran amplitud en frecuencias bajas, mientras que los musculares (**EMG**) contaminan frecuencias altas, incluida la banda **Beta**.
+  * Advertir que estas contribuciones no cerebrales pueden alterar la interpretación espectral.
+* **Respuesta obtenida:**
+  <details>
+  <summary>Ver respuesta completa del agente</summary>
+
+  > *(Pega aquí la respuesta textual generada por el agente)*
+
+  </details>
+* **Validación:** *(Escribe aquí tu valoración breve sobre la información recuperada y la claridad pedagógica)*
+
+---
+
+### Prueba 5 — Consulta fuera del alcance de la base de conocimiento *(Caso límite)*
+* **Pregunta:** *"¿Qué es la banda Gamma y qué porcentaje de potencia Gamma tiene la señal que analizaste?"*
+* **Resultado esperado:**
+  * Reconocer que la banda Gamma ($>30\text{ Hz}$) no está incluida dentro de las cuatro bandas implementadas ni en la base de conocimiento local.
+  * Aclarar que el análisis espectral del sistema se limita al intervalo de $1 - 30\text{ Hz}$.
+  * Abstenerse por completo de inventar o estimar un porcentaje de potencia para Gamma.
+* **Respuesta obtenida:**
+  <details>
+  <summary>Ver respuesta completa del agente</summary>
+
+  > *(Pega aquí la respuesta textual generada por el agente)*
+
+  </details>
+* **Validación:** *(Escribe aquí tu valoración breve sobre cómo el agente manejó el límite de dominio sin alucinar)*
