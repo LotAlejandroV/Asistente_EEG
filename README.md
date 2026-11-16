@@ -66,7 +66,7 @@ El proyecto no incluye claves de API en el código ni en el repositorio. Para ej
   * Debe mostrarse la gráfica con la forma de onda temporal y el espectro $\text{PSD}$.
 * **Respuesta obtenida:**
 <details>
-<summary>Ver respuesta completa del agente</summary>
+   <summary>Ver respuesta completa del agente</summary>
 
 A continuación presento los resultados del análisis de la señal sintética generada con componente principal **Alpha**.
 
