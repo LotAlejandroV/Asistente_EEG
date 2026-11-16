@@ -106,7 +106,7 @@ El proyecto no incluye claves de API en el código ni en el repositorio. Para ej
    
    </details>
 
-* **Validación:** *(Escribe aquí tu valoración breve sobre la ejecución de herramientas, exactitud numérica y visualización)*
+* * **Validación:** **Exitosa.** El agente seleccionó correctamente la herramienta `analizar_senal_eeg` para generar la señal sintética con componente Alpha (configurando parámetros válidos de $f_s = 256\text{ Hz}$ y duración de $10\text{ s}$). Identificó con precisión a **Alpha** como la banda predominante ($99,37\%$), y las potencias relativas reportadas suman exactamente el $100,00\%$, manteniendo plena consistencia con los valores de referencia ($99,36\%$). Asimismo, aclaró de forma explícita el carácter educativo de la señal sintética sin realizar afirmaciones diagnósticas.*
 
 ---
 
