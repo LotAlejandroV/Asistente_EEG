@@ -63,7 +63,7 @@ El proyecto no incluye claves de API en el código ni en el repositorio. Para ej
     | Theta | $0,14\%$ |
     | Alpha | $99,36\%$ |
     | Beta | $0,43\%$ |
-  * Debe mostrarse la gráfica con la forma de onda temporal y el espectro $\text{PSD}$.
+    
 * **Respuesta obtenida:**
    <details>
       <summary>Ver respuesta completa del agente</summary>
@@ -117,13 +117,32 @@ El proyecto no incluye claves de API en el código ni en el repositorio. Para ej
   * Explicar que la actividad Alpha posterior suele atenuarse al abrir los ojos o durante tareas de procesamiento visual (*reactividad Alpha*).
   * Mantener prudencia interpretativa sin afirmar que Alpha mide directamente calma, bienestar o un estado psicológico.
 * **Respuesta obtenida:**
-  <details>
-  <summary>Ver respuesta completa del agente</summary>
 
-  > *(Pega aquí la respuesta textual generada por el agente)*
+<details>
+<summary>Ver respuesta completa del agente</summary>
 
-  </details>
-* **Validación:** *(Escribe aquí tu valoración breve sobre la recuperación conceptual y el tono prudente)*
+Cuando una persona abre los ojos, la actividad alfa posterior (aproximadamente 8–13 Hz) suele **atenuarse o disminuir en potencia**, fenómeno denominado **bloqueo alfa** o **reactividad alfa**.
+
+### Qué ocurre
+En adultos despiertos y relajados con los ojos cerrados, el ritmo alfa es especialmente visible en regiones posteriores del cuero cabelludo (zona occipital/parietal). Al abrir los ojos, la entrada visual y el procesamiento de estímulos externos provocan una reducción de esa actividad alfa posterior. No se trata de que la actividad “desaparezca” por completo en todos los casos, pero sí de una supresión o desplazamiento relativo de la potencia en esa banda.
+
+### Interpretación fisiológica
+Desde un punto de vista fisiológico, este cambio se interpreta como un ajuste cortical a la nueva demanda sensorial:
+
+1. **Cambio de estado de vigilia**: con los ojos cerrados y poca estimulación externa, predomina un estado de reposo con atención dirigida hacia dentro. Al abrir los ojos, el cerebro pasa a un modo de procesamiento de información visual y vigilancia del entorno.
+2. **Activación de la corteza visual**: la estimulación retiniana y la activación de áreas visuales corticales interfieren con la generación o sostenimiento del ritmo alfa occipital.
+3. **Mecanismos de atención**: la apertura de los ojos está asociada a un aumento de la alerta y a un desplazamiento del foco atencional hacia el exterior, lo que modula las oscilaciones corticales en la banda alfa.
+
+### Cautelas interpretativas
+- La disminución de alfa al abrir los ojos es un **fenómeno fisiológico normal y esperable**; por sí sola no permite diagnosticar enfermedades ni inferir estados emocionales, trastornos del sueño ni condiciones psicológicas.
+- Existe variabilidad entre personas; la magnitud de la atenuación puede depender de factores como la edad, el nivel de relajación previa, la iluminación y la tarea visual realizada.
+- Una mayor o menor potencia relativa alfa no demuestra por sí sola calma, bienestar ni ningún estado psicológico determinado.
+
+En resumen: abrir los ojos suele producir una **reducción de la actividad alfa posterior** como reflejo de la activación visual y del cambio de atención desde un estado interno-relajado hacia el procesamiento de estímulos externos.
+
+</details>
+
+* **Validación:** **Exitosa.** El agente consultó la herramienta `consultar_conceptos_eeg` para recuperar los fundamentos neurofisiológicos de la banda Alpha desde la base de conocimiento local. Explicó con claridad el fenómeno de **reactividad o bloqueo alfa** (atenuación posterior entre $8$ y $13\text{ Hz}$ ante la estimulación visual y el cambio de foco atencional) y mantuvo una estricta prudencia interpretativa, aclarando que la potencia Alpha no mide por sí sola calma, bienestar ni estados psicológicos o clínicos.
 
 ---
 
