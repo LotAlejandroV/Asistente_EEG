@@ -385,3 +385,17 @@ El proyecto no incluye claves de API en el código ni en el repositorio. Para ej
 
   </details>
 * **Validación:** **Exitosa (Caso adicional).** El agente manejó de forma impecable una petición de escala masiva que sobrepasaba sus capacidades por diseño. Respetó rigurosamente el tope operativo de **3 llamadas a herramientas por consulta**, procesó las tres primeras señales con la herramienta `analizar_senal_eeg`, construyó una tabla comparativa cruzada con los datos obtenidos, y reportó el estado de las 7 tareas restantes (`NO_EJECUTADAS`) sin inventar ni alucinar ningún valor numérico para cumplir artificialmente con la solicitud.
+
+---
+
+## 6. Limitaciones del Sistema y Posibles Mejoras
+
+Dado el alcance del proyecto, el sistema presenta ciertas limitaciones debido a su diseño:
+
+* **1. Análisis monocanal y ausencia de eliminación automática de artefactos:** El sistema procesa un único canal seleccionado (por defecto `O1`) mediante el método de Welch sin aplicar rutinas avanzadas de limpieza (como Análisis de Componentes Independientes - ICA). Esto implica que artefactos oculares (EOG) o musculares (EMG) severos pueden contaminar el espectro (elevando las bandas lentas o la banda Beta) sin que el agente realice una corrección previa.
+* **2. Simplificación de las señales sintéticas:** Las señales generadas mediante `NumPy` utilizan componentes sinusoidales ideales sobre ruido gaussiano blanco. Si bien cumplen su función pedagócia, no reproducen la no-estacionariedad, la variabilidad temporal ni la complejidad multicanal de un electroencefalograma real.
+* **3. Restricción del rango espectral (1–30 Hz):** El análisis está limitado exclusivamente a las bandas Delta, Theta, Alpha y Beta. Cualquier consulta o análisis sobre la banda Gamma ($>30\text{ Hz}$) queda fuera del alcance técnico del agente.
+
+### Posibles mejoras futuras
+* **Incorporación de preprocesamiento avanzado:** Integrar filtros espaciales o rutinas automáticas de rechazo de artefactos basados en MNE-Python antes del cálculo espectral.
+* **Soporte multicanal y topografía:** Ampliar las herramientas para permitir comparaciones entre múltiples electrodos (p. ej., regiones frontales vs. occipitales) y visualizar mapas topográficos sencillos de distribución de potencia.
