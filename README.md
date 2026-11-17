@@ -274,7 +274,7 @@ El proyecto no incluye claves de API en el código ni en el repositorio. Para ej
 ---
 
 ### Prueba 5 — Consulta fuera del alcance y de la base de conocimiento *(Caso límite)*
-* **Pregunta:** *"Explica brevemente qué es la banda Gamma, genera una señal sintética predeterminada e indícame qué porcentaje de potencia Gamma tiene esa señal analizada."*
+* **Pregunta:** *"Explica brevemente qué es la banda Gamma, genera una señal sintética cualquiera e indícame qué porcentaje de potencia Gamma tiene esa señal analizada."*
 * **Resultado esperado:**
   * Explicar teóricamente el concepto de la banda Gamma ($>30\text{ Hz}$) utilizando el conocimiento preentrenado del modelo Nemotron (dado que no forma parte de la base de conocimiento local).
   * Ejecutar la herramienta `analizar_senal_eeg` para generar una señal sintética de prueba.
@@ -302,4 +302,86 @@ El proyecto no incluye claves de API en el código ni en el repositorio. Para ej
   *Nota:* Esta señal es sintética y solo sirve con fines ilustrativos; no reproduce toda la complejidad de un EEG real.
 
   </details>
-* **Validación:** **Exitosa.** El agente manejó el caso límite de forma óptima. Al consultar la base de conocimiento local y obtener un aviso de concepto no encontrado para "gamma", el modelo recurrió con éxito a su conocimiento propio y preentrenado para explicar teóricamente el concepto. Asimismo, invocó la herramienta de análisis espectral para generar la señal solicitada, respetando estrictamente las restricciones del sistema ($1 - 30\text{ Hz}$) y negándose de manera tajante a inventar o estimar un porcentaje numérico para la banda Gamma.
+* **Validación:** **Exitosa.** El agente manejó el caso límite de forma óptima. Al consultar la base de conocimiento local y obtener un aviso de concepto no encontrado para "gamma", el modelo recurrió con éxito a su conocimiento propio (como se evidencia en la nota dejada al final de esta validación) y preentrenado para explicar teóricamente el concepto. Asimismo, invocó la herramienta de análisis espectral para generar la señal solicitada, respetando estrictamente las restricciones del sistema ($1 - 30\text{ Hz}$) y negándose de manera tajante a inventar o estimar un porcentaje numérico para la banda Gamma.
+  ```text
+  [TOOL | llamadas acumuladas: 1/3] consultar_conceptos_eeg
+    argumentos: {"concepto":"gamma"}
+    resultado: CONCEPTO_NO_ENCONTRADO: 'gamma' no está en la base de conocimiento local.
+
+### Prueba 6 — Solicitud masiva y gestión del límite de llamadas *(Caso adicional)*
+* **Pregunta:** *"Genera 10 señales con cualquier predominancia y compáralas entre sí."*
+* **Resultado esperado:**
+  * Intentar procesar la solicitud ejecutando el análisis de las señales mediante la herramienta `analizar_senal_eeg`.
+  * Respetar estrictamente el **límite operativo de 3 llamadas reales a herramientas por consulta**, generando una respuesta parcial con los resultados obtenidos hasta ese tope.
+  * Informar de forma transparente qué tareas quedaron pendientes (`NO_EJECUTADAS`), absteniéndose por completo de inventar o simular las señales restantes.
+  * Comparar de forma cruzada las señales efectivamente analizadas utilizando una tabla resumen y mantener una estricta prudencia interpretativa sin atribuir significados clínicos a las señales sintéticas.
+* **Respuesta obtenida:**
+  <details>
+  <summary>Ver respuesta completa del agente</summary>
+
+  He generado **3 señales sintéticas educativas** con predominancia distinta (Delta, Alfa y Beta). Debido al límite de **tres llamadas a herramientas por consulta**, no ha sido posible generar las 10 señales solicitadas en este turno; las 7 restantes quedan pendientes para próximas consultas.
+
+  A continuación presento los resultados numéricos y una comparación directa entre las tres señales obtenidas.
+
+  ### 1. Señal con predominancia Delta
+  | Banda | Potencia relativa (%) |
+  |-------|----------------------:|
+  | Delta | 98.76 |
+  | Theta | 0.17 |
+  | Alfa | 0.26 |
+  | Beta | 0.80 |
+
+  - **Potencia total (1–30 Hz):** 4.5188 µV²
+  - **Banda predominante:** Delta
+
+  ### 2. Señal con predominancia Alfa
+  | Banda | Potencia relativa (%) |
+  |-------|----------------------:|
+  | Delta | 0.08 |
+  | Theta | 0.10 |
+  | Alfa | 99.37 |
+  | Beta | 0.45 |
+
+  - **Potencia total (1–30 Hz):** 8.0528 µV²
+  - **Banda predominante:** Alfa
+
+  ### 3. Señal con predominancia Beta
+  | Banda | Potencia relativa (%) |
+  |-------|----------------------:|
+  | Delta | 0.14 |
+  | Theta | 0.17 |
+  | Alfa | 0.26 |
+  | Beta | 99.43 |
+
+  - **Potencia total (1–30 Hz):** 4.5474 µV²
+  - **Banda predominante:** Beta
+
+  ---
+
+  ### Comparación entre las tres señales
+
+  | Señal | Predominancia numérica | Valor de la banda predominante (%) | Potencia total (µV²) |
+  |-------|------------------------|-----------------------------------|----------------------|
+  | 1 | Delta | 98.76 | 4.5188 |
+  | 2 | Alfa | 99.37 | 8.0528 |
+  | 3 | Beta | 99.43 | 4.5474 |
+
+  **Observaciones numéricas:**
+  - Las tres señales muestran una concentración muy alta de potencia en la banda designada como componente principal (>98 %).
+  - La señal alfa presenta a su vez la potencia total absoluta más elevada de las tres (8.0528 µV²), aunque su porcentaje relativo en alfa es similar al de beta (99.37 % vs. 99.43 %).
+  - Las potencias relativas de las bandas no predominantes son bajas en todos los casos (inferiores al 1 %), salvo la potencia beta de la señal delta (0.80 %), que es ligeramente superior a las demás.
+
+  **Nota interpretativa (prudente):** Estos resultados describen únicamente la distribución espectral de señales sintéticas generadas con un componente principal impuesto. No constituyen un diagnóstico, no infieren trastornos del sueño ni estados psicológicos, y no reproducen toda la complejidad de un EEG real.
+
+  ---
+
+  ### Estado de ejecución y pendientes
+
+  - **Llamadas realizadas:** 3 (análisis de señales sintéticas). Se ha alcanzado el límite máximo permitido en esta consulta.
+  - **Llamadas NO_EJECUTADAS:** 7 análisis adicionales de señales sintéticas necesarias para completar el conjunto de 10 solicitado.
+  - **Comparar_bandas:** No se ha utilizado porque esa herramienta resume las bandas de una señal individual a partir de su JSON de análisis; no compara múltiples archivos entre sí.
+
+  Si lo deseas, en una nueva consulta puedo generar hasta 3 señales más y continuar hasta completar el grupo de 10.
+
+  </details>
+* **Validación:** **Exitosa (Caso adicional).** El agente manejó de forma impecable una petición de escala masiva que sobrepasaba sus capacidades por diseño. Respetó rigurosamente el tope operativo de **3 llamadas a herramientas por consulta**, procesó las tres primeras señales con la herramienta `analizar_senal_eeg`, construyó una tabla comparativa cruzada con los datos obtenidos, y reportó el estado de las 7 tareas restantes (`NO_EJECUTADAS`) sin inventar ni alucinar ningún valor numérico para cumplir artificialmente con la solicitud.
