@@ -273,33 +273,33 @@ El proyecto no incluye claves de API en el código ni en el repositorio. Para ej
 * **Validación:** **Exitosa.** El agente orquestó de manera óptima el límite máximo de **3 llamadas a herramientas** en una sola consulta: invocó `analizar_senal_eeg` para generar la señal sintética Theta ($f_s = 250\text{ Hz}$), `comparar_bandas` para determinar la banda predominante ($98,87\%$) y la brecha porcentual ($98,76\text{ pp}$), y `consultar_conceptos_eeg` para fundamentar las características neurofisiológicas del ritmo Theta. Además, mantuvo una estricta rigurosidad educativa al diferenciar el cálculo espectral de la interpretación clínica y delimitar el alcance de análisis al rango de $1 - 30\text{ Hz}$.
 ---
 
-### Prueba 5 — Consulta fuera del alcance de la base de conocimiento *(Caso límite)*
-* **Pregunta:** *"¿Qué es la banda Gamma y qué porcentaje de potencia Gamma tiene la señal que analizaste?"*
+### Prueba 5 — Consulta fuera del alcance y de la base de conocimiento *(Caso límite)*
+* **Pregunta:** *"Explica brevemente qué es la banda Gamma, genera una señal sintética predeterminada e indícame qué porcentaje de potencia Gamma tiene esa señal analizada."*
 * **Resultado esperado:**
-  * Reconocer que la banda Gamma ($>30\text{ Hz}$) no está incluida dentro de las cuatro bandas implementadas ni es calculable por el sistema.
-  * Aclarar que el análisis espectral del sistema se limita estrictamente al intervalo de $1 - 30\text{ Hz}$ (Delta, Theta, Alpha y Beta).
-  * Abstenerse por completo de inventar, estimar o alucinar un porcentaje de potencia para la banda Gamma.
+  * Explicar teóricamente el concepto de la banda Gamma ($>30\text{ Hz}$) utilizando el conocimiento preentrenado del modelo Nemotron (dado que no forma parte de la base de conocimiento local).
+  * Ejecutar la herramienta `analizar_senal_eeg` para generar una señal sintética de prueba.
+  * Reconocer que la banda Gamma queda fuera del rango de análisis implementado ($1 - 30\text{ Hz}$), indicando explícitamente que no se puede calcular ni inventar su porcentaje de potencia.
 * **Respuesta obtenida:**
   <details>
   <summary>Ver respuesta completa del agente</summary>
 
-  **Banda Gamma**
+  **Banda Gamma (concepto educativo)**  
+  La banda Gamma se refiere normalmente a oscilaciones corticales de frecuencia superior a 30 Hz (a menudo entre ~30 y 100 Hz, dependiendo del autor). Se ha asociado en la literatura a procesos como la integración de información sensorial, la atención y ciertos mecanismos cognitivos de alto nivel. No obstante, su detección en EEG de superficie es técnicamente exigente por la baja amplitud y la vulnerabilidad a artefactos musculares y oculares.
 
-  Desde un punto de vista educativo, la banda Gamma se refiere a la actividad eléctrica cerebral de **frecuencia alta**, habitualmente definida por encima de los **30 Hz** (los límites exactos varían según el autor, p. ej. 30–80 Hz o 30–100 Hz). Se ha asociado en la literatura a procesos como la integración de información sensorial, la atención y ciertos procesos cognitivos, si bien su interpretación en EEG de superficie es compleja y está sujeta a artefactos musculares y oculares.
+  **Análisis de señal sintética generada**  
+  Se generó una señal educativa con componente principal **Alpha**, a 256 Hz y 10 segundos de duración. El sistema calculó únicamente las bandas implementadas (Delta, Theta, Alpha y Beta) dentro del rango de 1 a 30 Hz:
 
-  **¿Cuánto porcentaje de potencia Gamma tiene la señal que analicé?**
+  | Banda | Intervalo (Hz) | Potencia relativa (%) |
+  |-------|----------------|------------------------|
+  | Delta | [1, 4) | 0.08 |
+  | Theta | [4, 8) | 0.10 |
+  | Alpha | [8, 13) | 99.37 |
+  | Beta | [13, 30] | 0.45 |
 
-  No he analizado ninguna señal en esta conversación, por lo que **no dispongo de resultados previos** sobre los que informar un porcentaje.
+  **Potencia Gamma**  
+  El sistema **no implementa el cálculo de la banda Gamma**, ya que se sitúa fuera del rango analizado (1–30 Hz). Por lo tanto, **no se puede indicar un porcentaje de potencia Gamma** para esta señal; cualquier valor sería inventado y no tiene validez.
 
-  Además, este sistema solo calcula las cuatro bandas implementadas entre 1 y 30 Hz:
-
-  - Delta [1, 4) Hz  
-  - Theta [4, 8) Hz  
-  - Alpha [8, 13) Hz  
-  - Beta [13, 30] Hz  
-
-  La **banda Gamma no está implementada**, así que no puedo calcular ni inventar su potencia relativa. Si deseas, puedo analizar una señal sintética o un archivo EDF para obtener los valores de las cuatro bandas disponibles, pero Gamma quedaría fuera del alcance del cálculo.
+  *Nota:* Esta señal es sintética y solo sirve con fines ilustrativos; no reproduce toda la complejidad de un EEG real.
 
   </details>
-* **Validación:** **Exitosa.** El agente manejó el caso límite de forma óptima: aunque aportó el contexto conceptual general de la banda Gamma a partir de su conocimiento base (dado que no figura en la base de conocimiento local), respetó estrictamente las restricciones del sistema. Se negó con absoluta claridad a inventar o estimar datos numéricos, recordando que el cálculo espectral se limita exclusivamente al rango de $1 - 30\text{ Hz}$ (Delta, Theta, Alpha y Beta).
----
+* **Validación:** **Exitosa.** El agente manejó el caso límite de forma óptima. Al consultar la base de conocimiento local y obtener un aviso de concepto no encontrado para "gamma", el modelo recurrió con éxito a su conocimiento propio y preentrenado para explicar teóricamente el concepto. Asimismo, invocó la herramienta de análisis espectral para generar la señal solicitada, respetando estrictamente las restricciones del sistema ($1 - 30\text{ Hz}$) y negándose de manera tajante a inventar o estimar un porcentaje numérico para la banda Gamma.
