@@ -416,8 +416,6 @@ Dado el alcance del proyecto, el sistema presenta ciertas limitaciones debido a 
 
 ### 2. Literatura y Base de Conocimiento Científico
 
-Para fundamentar la interpretación neurofisiológica de las señales EEG, las bandas de frecuencia y los artefactos presentes en los registros, se utiliza la siguiente literatura especializada:
-
 - **Fundamentos de electroencefalografía:**
   Britton, J. W., Frey, L. C., Hopp, J. L., Korb, P., Koubeissi, M. Z., Lievens, W. E., Pestana-Knight, E. M., & St. Louis, E. K. (2016). *Electroencephalography (EEG): An introductory text and atlas of normal and abnormal findings in adults, children, and infants*. American Epilepsy Society. https://doi.org/10.5698/978-0-9979756-0-4
 
