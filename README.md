@@ -209,21 +209,68 @@ El proyecto no incluye claves de API en el código ni en el repositorio. Para ej
 * **Validación:** **Exitosa.** El agente ejecutó `analizar_senal_eeg` dos veces (una para cada componente solicitada, utilizando $f_s = 100\text{ Hz}$ y duración $= 10\text{ s}$) y comparó directamente ambos conjuntos de resultados sin exceder el límite de herramientas. Identificó correctamente a **Delta** ($97,03\%$) como predominante en la primera señal y a **Beta** ($98,61\%$) en la segunda, manteniendo la consistencia esperada frente a las referencias de $f_s = 250\text{ Hz}$ ($98,72\%$ y $99,38\%$) y distinguiendo con claridad las métricas de cada registro.
 ---
 
-### Prueba 4 — Consulta sobre artefactos EOG y EMG *(Uso de herramienta)*
-* **Pregunta:** *"¿Qué artefactos EOG y EMG pueden contaminar una señal EEG? Explica cómo pueden afectar las frecuencias bajas y la banda Beta."*
+### Prueba 4 — Análisis integral de señal sintética Theta y consulta conceptual *(Uso combinado de herramientas)*
+* **Pregunta:** *"Genera una señal sintética con componente principal Theta, analiza y compara sus bandas de frecuencia y explica sus características neurofisiológicas y consideraciones de interpretación."*
 * **Resultado esperado:**
-  * Invocar `consultar_conceptos_eeg` para recuperar la información de artefactos de la base de conocimiento local.
-  * Explicar que los artefactos oculares (**EOG**: parpadeos y movimientos oculares) aportan deflexiones de gran amplitud en frecuencias bajas, mientras que los musculares (**EMG**) contaminan frecuencias altas, incluida la banda **Beta**.
-  * Advertir que estas contribuciones no cerebrales pueden alterar la interpretación espectral.
+  * Ejecutar secuencialmente las tres herramientas disponibles dentro del límite permitido (`analizar_senal_eeg`, `comparar_bandas` y `consultar_conceptos_eeg`).
+  * Identificar **Theta** ($4 - 8\text{ Hz}$) como banda predominante ($\approx 98,87\%$) y calcular la brecha en puntos porcentuales entre la banda de mayor y menor potencia relativa.
+  * Explicar las características neurofisiológicas del ritmo Theta (somnolencia, transiciones hacia el sueño, memoria y control cognitivo) manteniendo prudencia clínica y aclarando que el sistema solo evalúa bandas entre $1$ y $30\text{ Hz}$.
 * **Respuesta obtenida:**
   <details>
   <summary>Ver respuesta completa del agente</summary>
 
-  > *(Pega aquí la respuesta textual generada por el agente)*
+  **Análisis de señal sintética con componente principal Theta**
+
+  Se generó y analizó una señal sintética educativa diseñada con predominancia en la banda Theta (4–8 Hz), muestreada a 250 Hz y evaluada en el rango de 1 a 30 Hz.
+
+  ---
+
+  ### 1. Resultados numéricos del análisis espectral
+
+  | Banda | Rango (Hz) | Potencia absoluta (µV²) | Potencia relativa (%) |
+  |-------|------------|-------------------------|-----------------------|
+  | Delta | [1, 4) | 0,0054 | 0,11 |
+  | **Theta** | **[4, 8)** | **4,6096** | **98,87** |
+  | Alpha | [8, 13) | 0,0121 | 0,26 |
+  | Beta | [13, 30] | 0,0352 | 0,75 |
+
+  - **Potencia total (1–30 Hz):** 4,6623 µV²  
+  - **Banda predominante:** Theta (98,87 %)  
+  - **Diferencia entre la mayor y la menor potencia relativa:** 98,76 puntos porcentuales  
+
+  Estos valores indican que, en esta señal sintética, prácticamente toda la energía espectral se concentra en la banda Theta; las contribuciones de Delta, Alpha y Beta son marginales en comparación.
+
+  ---
+
+  ### 2. Características neurofisiológicas del ritmo Theta
+
+  Según el marco conceptual consultado, las oscilaciones Theta (4–8 Hz) presentan las siguientes características:
+
+  - Son oscilaciones de **frecuencia intermedia** cuya expresión y significado dependen de la región cerebral registrada, la tarea realizada y el estado conductual del sujeto.
+  - Pueden observarse durante la **somnolencia** y en las **transiciones hacia el sueño**.
+  - También se han asociado con procesos de **memoria** y **control cognitivo**, si bien estas asociaciones no son exclusivas ni universales.
+  - No constituyen, por sí solas, un marcador específico de meditación, fatiga o desempeño mnemónico.
+
+  ---
+
+  ### 3. Consideraciones de interpretación
+
+  Es importante distinguir los **resultados numéricos** de su **interpretación clínica o fisiológica**:
+
+  1. **No diagnóstico:** La predominancia de Theta en esta señal sintética no implica por sí misma la presencia de trastornos del sueño, alteraciones cognitivas ni estados psicológicos específicos.
+  2. **Dependencia contextual:** En un EEG real, la interpretación de una actividad theta predominante requería conocer el estado de vigilia/sueño, la posición de los ojos (abiertos/cerrados), la ubicación del electrodo, la edad del sujeto y las condiciones de adquisición.
+  3. **Naturaleza sintética:** Esta señal es educativa y no reproduce toda la complejidad de un EEG real (artefactos, variabilidad interindividual, actividad espontánea no estacionaria, etc.).
+  4. **Banda Gamma:** El sistema solo calcula las bandas Delta, Theta, Alpha y Beta (1–30 Hz). Las consultas sobre Gamma u otras bandas fuera de ese rango no están implementadas y no se han inventado valores.
+
+  ---
+
+  ### Estado de ejecución
+
+  Se utilizaron las tres llamadas permitidas: análisis de señal, comparación de bandas y consulta conceptual. Todas las tareas solicitadas quedaron completadas; no hay llamadas pendientes.
 
   </details>
-* **Validación:** *(Escribe aquí tu valoración breve sobre la información recuperada y la claridad pedagógica)*
 
+* **Validación:** **Exitosa.** El agente orquestó de manera óptima el límite máximo de **3 llamadas a herramientas** en una sola consulta: invocó `analizar_senal_eeg` para generar la señal sintética Theta ($f_s = 250\text{ Hz}$), `comparar_bandas` para determinar la banda predominante ($98,87\%$) y la brecha porcentual ($98,76\text{ pp}$), y `consultar_conceptos_eeg` para fundamentar las características neurofisiológicas del ritmo Theta. Además, mantuvo una estricta rigurosidad educativa al diferenciar el cálculo espectral de la interpretación clínica y delimitar el alcance de análisis al rango de $1 - 30\text{ Hz}$.
 ---
 
 ### Prueba 5 — Consulta fuera del alcance de la base de conocimiento *(Caso límite)*
