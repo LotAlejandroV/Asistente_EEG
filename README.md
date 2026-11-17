@@ -399,3 +399,40 @@ Dado el alcance del proyecto, el sistema presenta ciertas limitaciones debido a 
 ### Posibles mejoras futuras
 * **Incorporación de preprocesamiento avanzado:** Integrar filtros espaciales o rutinas automáticas de rechazo de artefactos basados en MNE-Python antes del cálculo espectral.
 * **Soporte multicanal y topografía:** Ampliar las herramientas para permitir comparaciones entre múltiples electrodos (p. ej., regiones frontales vs. occipitales) y visualizar mapas topográficos sencillos de distribución de potencia.
+
+
+## Referencias y Base de Conocimiento
+
+### 1. Conjunto de Datos (Dataset)
+
+- **Recurso del Dataset:**
+  Schalk, G. (2009). *EEG Motor Movement/Imagery Dataset* (version 1.0.0). PhysioNet. RRID:SCR_007345. https://doi.org/10.13026/C28G6P
+
+- **Publicación original (BCI2000):**
+  Schalk, G., McFarland, D. J., Hinterberger, T., Birbaumer, N., & Wolpaw, J. R. (2004). BCI2000: A general-purpose brain-computer interface (BCI) system. *IEEE Transactions on Biomedical Engineering, 51*(6), 1034–1043. https://doi.org/10.1109/TBME.2004.827072
+
+- **Plataforma PhysioNet:**
+  Pollard, T., Moody, B. E., Lehman, L. H., Gow, B. J., Fernandes, C., Xie, C., Johnson, A., Mark, R. G., & Heldt, T. (2026). PhysioNet as a global platform for biomedical research. *Nature Health, 1*, 792–795. https://doi.org/10.1038/s44360-026-00096-z
+
+### 2. Literatura y Base de Conocimiento Científico
+
+Para fundamentar la interpretación neurofisiológica de las señales EEG, las bandas de frecuencia y los artefactos presentes en los registros, se utiliza la siguiente literatura especializada:
+
+- **Fundamentos de electroencefalografía:**
+  Britton, J. W., Frey, L. C., Hopp, J. L., Korb, P., Koubeissi, M. Z., Lievens, W. E., Pestana-Knight, E. M., & St. Louis, E. K. (2016). *Electroencephalography (EEG): An introductory text and atlas of normal and abnormal findings in adults, children, and infants*. American Epilepsy Society. https://doi.org/10.5698/978-0-9979756-0-4
+
+### 3. Librerías y Herramientas de Software
+
+- **MNE-Python:**
+  Gramfort, A., Luessi, A., Larson, E., Engemann, D. A., Strohmeier, D., Brodbeck, C., Goj, R., Jas, M., Brooks, T., Parkkonen, L., & Hämäläinen, M. (2013). MEG and EEG data analysis with MNE-Python. *Frontiers in Neuroscience, 7*, Article 267. https://doi.org/10.3389/fnins.2013.00267
+
+- **SciPy (Método de Welch e integración numérica):**
+  Virtanen, P., Gommers, R., Oliphant, T. E., Haberland, M., Reddy, T., Cournapeau, D., Burovski, E., Peterson, P., Weckesser, W., Bright, J., van der Walt, S. J., Brett, M., Wilson, J., Millman, K. J., Mayorov, N., Nelson, A. R. J., Jones, E., Kern, R., Larson, E., ... Vázquez-Baeza, Y. (2020). SciPy 1.0: Fundamental algorithms for scientific computing in Python. *Nature Methods, 17*(3), 261–272. https://doi.org/10.1038/s41592-019-0686-2
+
+- **Gradio:**
+  Abid, A., Abdalla, A., Abid, A., Khan, D., Alfozan, A., & Zou, J. (2019). *Gradio: Hassle-free sharing and testing of ML models in the wild* [Preprint]. arXiv. https://arxiv.org/abs/1906.02569
+
+### 4. Inteligencia Artificial e Infraestructura Tecnológica
+
+- **NVIDIA NIM API:**
+  NVIDIA. (s. f.). *NVIDIA Nemotron 3.5 Super VL 120B-A12B* [Modelo de inteligencia artificial]. NVIDIA. https://build.nvidia.com/nvidia/nemotron-3.5-super-vl-120b-a12b/modelcard
