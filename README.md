@@ -158,14 +158,55 @@ El proyecto no incluye claves de API en el código ni en el repositorio. Para ej
     | Alpha | $0,26\%$ | $0,26\%$ |
     | Beta | $0,76\%$ | $99,38\%$ |
 * **Respuesta obtenida:**
-  <details>
-  <summary>Ver respuesta completa del agente</summary>
 
-  > *(Pega aquí la respuesta textual generada por el agente)*
+   <details>
+   <summary>Ver respuesta completa del agente</summary>
+   
+   Aquí tienes el análisis de ambas señales sintéticas educativas:
+   
+   ### Señal Sintética Delta
+   
+   **Parámetros:** componente principal Delta, fs = 100 Hz, duración = 10 s
+   
+   | Banda | Potencia absoluta (µV²) | Potencia relativa (%) |
+   | :--- | :---: | :---: |
+   | Delta [1,4) Hz | 4.5552 | 97.03 |
+   | Theta [4,8) Hz | 0.0194 | 0.41 |
+   | Alpha [8,13) Hz | 0.0298 | 0.63 |
+   | Beta [13,30] Hz | 0.0904 | 1.92 |
+   
+   - **Potencia total (1-30 Hz):** 4.6947 µV²
+   - **Banda predominante:** Delta
+   
+   ---
+   
+   ### Señal Sintética Beta
+   
+   **Parámetros:** componente principal Beta, fs = 100 Hz, duración = 10 s
+   
+   | Banda | Potencia absoluta (µV²) | Potencia relativa (%) |
+   | :--- | :---: | :---: |
+   | Delta [1,4) Hz | 0.0181 | 0.37 |
+   | Theta [4,8) Hz | 0.0194 | 0.40 |
+   | Alpha [8,13) Hz | 0.0298 | 0.62 |
+   | Beta [13,30] Hz | 4.7770 | 98.61 |
+   
+   - **Potencia total (1-30 Hz):** 4.8442 µV²
+   - **Banda predominante:** Beta
+   
+   ---
+   
+   ### Comparación y conclusión
+   
+   - En la señal generada con componente principal **Delta**, la banda Delta concentra el **97,03 %** de la potencia relativa, siendo claramente la predominante.
+   - En la señal generada con componente principal **Beta**, la banda Beta concentra el **98,61 %** de la potencia relativa, siendo claramente la predominante.
+   - La potencia total entre 1 y 30 Hz es ligeramente mayor en la señal Beta (4,8442 µV²) que en la señal Delta (4,6947 µV²).
+   
+   **Nota importante:** Estas son señales sintéticas educativas diseñadas para ilustrar el comportamiento de las bandas EEG. No reproducen la complejidad de un EEG real y no deben utilizarse para diagnóstico ni inferencia de estados clínicos o psicológicos.
+   
+   </details>
 
-  </details>
-* **Validación:** *(Escribe aquí tu valoración breve sobre la comparación entre señales y la generación de las dos gráficas)*
-
+* **Validación:** **Exitosa.** El agente ejecutó `analizar_senal_eeg` dos veces (una para cada componente solicitada, utilizando $f_s = 100\text{ Hz}$ y duración $= 10\text{ s}$) y comparó directamente ambos conjuntos de resultados sin exceder el límite de herramientas. Identificó correctamente a **Delta** ($97,03\%$) como predominante en la primera señal y a **Beta** ($98,61\%$) en la segunda, manteniendo la consistencia esperada frente a las referencias de $f_s = 250\text{ Hz}$ ($98,72\%$ y $99,38\%$) y distinguiendo con claridad las métricas de cada registro.
 ---
 
 ### Prueba 4 — Consulta sobre artefactos EOG y EMG *(Uso de herramienta)*
